@@ -10,7 +10,7 @@ function Home() {
                     <img src ={image} alt="post"/>
                 </div>
                 <div className="card-content">
-                <i class="material-icons" style={{color:"red"}}>favorite</i>
+                <i className="material-icons" style={{color:"red"}}>favorite</i>
                     <h6>Title</h6>
                     <p>This is amazing post</p>
                     <input
@@ -26,7 +26,7 @@ function Home() {
                     <img src ={image} alt="post"/>
                 </div>
                 <div className="card-content">
-                <i class="material-icons" style={{color:"red"}}>favorite</i>
+                <i className="material-icons" style={{color:"red"}}>favorite</i>
                     <h6>Title</h6>
                     <p>This is amazing post</p>
                     <input
@@ -42,7 +42,7 @@ function Home() {
                     <img src ={image} alt="post"/>
                 </div>
                 <div className="card-content">
-                <i class="material-icons" style={{color:"red"}}>favorite</i>
+                <i className="material-icons" style={{color:"red"}}>favorite</i>
                     <h6>Title</h6>
                     <p>This is amazing post</p>
                     <input

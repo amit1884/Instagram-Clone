@@ -1,5 +1,6 @@
 const express =require('express');
 const mongoose=require('mongoose');
+// const cors=require('cors')
 const PORT=5000;
 
 
@@ -16,6 +17,8 @@ mongoose.connection.on('error',(err)=>{
 })
 
 const app=express();
+
+// app.use(cors())
 //models
 require('./models/user')
 require('./models/post')

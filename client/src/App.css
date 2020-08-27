@@ -43,3 +43,9 @@ h2{
 .home-card h5{
     padding:10px;
 }
+
+.toast-conatiner{
+    top:30px !important;
+    right:20px !important;
+    left:auto !important;
+}

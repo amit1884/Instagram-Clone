@@ -1,27 +1,45 @@
 import React ,{useState}from 'react'
-import {Link} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
+import M from 'materialize-css';
 function SignUp() {
 
-    const [Name,setName]=useState('')
-    const [Email,setEmail]=useState('')
-    const [Password,setPassword]=useState('')
+    const history=useHistory();
+    const [name,setName]=useState('')
+    const [email,setEmail]=useState('')
+    const [password,setPassword]=useState('')
 
     const PostData=()=>{
-        fetch("http://localhost:5000/signup",{
-            method:"post",
-            header:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                name:"",
-                password:"",
-                email:""
+        if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+            M.toast({html:"Invalid Email",classes:"#c62828 red darken-3"})
+        }
+        else{
+
+            fetch("/signup",{
+                method:"post",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    name,
+                    password,
+                    email
+                })
             })
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-        })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data)
+                if(data.error){
+                    M.toast({html:data.error,classes:"#c62828 red darken-3"})
+                }
+                else{
+                    M.toast({html:data.message,classes:"#43a047 green darken-1"})
+                    history.push('/login')
+                }
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        }
     }
 
     return (
@@ -31,23 +49,23 @@ function SignUp() {
                 <input
                 type="text"
                 placeholder="Name"
-                value={Name}
+                value={name}
                 onChange={(e)=>setName(e.target.value)}
                 />
                 <input
                 type="text"
                 placeholder="Email"
-                value={Email}
+                value={email}
                 onChange={(e)=>setEmail(e.target.value)}
                 />
                 <input
                 type="password"
                 placeholder="Password"
-                value={Password}
+                value={password}
                 onChange={(e)=>setPassword(e.target.value)}
                 />
                 <button 
-                onCLick={PostData}
+                onClick={PostData}
                 className="btn waves-effect waves-light #64b5f6 blue darken-1">
                     SignUp
                 </button>
