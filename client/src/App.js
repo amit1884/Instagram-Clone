@@ -6,6 +6,7 @@ import Home from './components/Screens/Home';
 import Login from './components/Screens/Login';
 import SignUp from './components/Screens/SignUp';
 import Profile from './components/Screens/Profile';
+import CreatePost from './components/Screens/CreatePost';
 function App() {
   return (
       <BrowserRouter>
@@ -21,6 +22,9 @@ function App() {
       </Route>
       <Route path="/profile">
         <Profile/>
+      </Route>
+      <Route path="/create">
+        <CreatePost/>
       </Route>
 
       </BrowserRouter>
