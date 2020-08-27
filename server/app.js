@@ -1,13 +1,7 @@
 const express =require('express');
 const mongoose=require('mongoose');
 const PORT=3000;
-require('./models/user')
 
-const app=express();
-app.use(express.json())
-
-//Routes
-app.use(require('./routes/auth'));
 
 //Database Connection
 const {MONGOURI} =require('./keys')
@@ -21,6 +15,15 @@ mongoose.connection.on('error',(err)=>{
     console.log('error connecting to mongo ???',err);
 })
 
+const app=express();
+//models
+require('./models/user')
+require('./models/post')
+
+//Routes
+app.use(express.json())
+app.use(require('./routes/auth'));
+app.use(require('./routes/post'));
 
 
 
