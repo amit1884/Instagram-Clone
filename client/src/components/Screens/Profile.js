@@ -1,7 +1,24 @@
-import React from 'react'
+import React,{useEffect,useState,useContext} from 'react'
 import '../../App.css';
 import defaultAvatar from '../../assets/6.jpg'
+import {UserContext} from '../../App'
 function Profile() {
+
+    const [mypics,setPics]=useState([])
+    const {state,dispatch}=useContext(UserContext)
+    useEffect(()=>{
+
+        fetch("/mypost",{
+            headers:{
+                "Authorization":"Bearer "+localStorage.getItem("jwt")
+            }
+        })
+        .then(res=>res.json())
+        .then(result=>{
+            console.log(result)
+            setPics(result.mypost)
+        })
+    },[])
     return (
         <div style={{
             maxWidth:"550px",
@@ -17,7 +34,7 @@ function Profile() {
                     <img src ={defaultAvatar} alt ="profile" className="profile-img"/>
                 </div>
                 <div>
-                    <h5>Natsu Dragneel</h5>
+                    <h5>{state?state.name:"Loading"}</h5>
                     <div style={{display:"flex",justifyContent:"space-between",overflow:"hidden"}}>
                         <p style={{marginLeft:"8px"}}>45 Posts</p>
                         <p style={{marginLeft:"8px"}}>40 Followers</p>
@@ -26,13 +43,17 @@ function Profile() {
                 </div>
             </div>
             <div className="gallery">
-                <img className="item" src ={defaultAvatar} alt="yourposts"/>
-                <img className="item" src ={defaultAvatar} alt="yourposts"/>
-                <img className="item" src ={defaultAvatar} alt="yourposts"/>
-                <img className="item" src ={defaultAvatar} alt="yourposts"/>
-                <img className="item" src ={defaultAvatar} alt="yourposts"/>
-                <img className="item" src ={defaultAvatar} alt="yourposts"/>
-                <img className="item" src ={defaultAvatar} alt="yourposts"/>
+                {
+                    mypics.map(item=>{
+                        return(
+                            <img 
+                            className="item" 
+                            src ={item.photo} 
+                            alt={item.title} 
+                            key={item._id}/>
+                        )
+                    })
+                }
             </div>
         </div>
     )
