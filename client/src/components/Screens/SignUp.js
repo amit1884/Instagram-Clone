@@ -70,7 +70,7 @@ function SignUp() {
                     SignUp
                 </button>
                 <h5>
-                    <Link to ="/signup">
+                    <Link to ="/login">
                         Already Have an account ?
                     </Link>
                 </h5>

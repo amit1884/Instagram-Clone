@@ -65,7 +65,7 @@ function Login() {
             Login
           </button>
             <h5>
-                <Link to ="/login">
+                <Link to ="/signup">
                     Don't Have an account ?
                 </Link>
             </h5>
