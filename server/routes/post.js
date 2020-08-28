@@ -6,7 +6,7 @@ const Post=mongoose.model("Post")
 router.post('/createpost',requireLogin,(req,res)=>{
 
     const {title,body,pic}=req.body;
-    console.log(title,body,pic);
+    // console.log(title,body,pic);
     if(!title||!body||!pic){
         return res.status(401).json({error:"Please fill all the fields"})
     }
@@ -110,6 +110,29 @@ router.put("/comment",requireLogin,(req,res)=>{
         }
         else{
             res.json(result)
+        }
+    })
+})
+
+
+router.delete("/deletepost/:postId",requireLogin,(req,res)=>{
+
+    Post.findOne({_id:req.params.postId})
+    .populate("postedBy","_id")
+    .exec((err,post)=>{
+        if(err)
+        {
+            return res.status(422).json({error:err})
+        }
+        if(post.postedBy._id.toString()===req.user._id.toString())
+        {
+            post.remove()
+            .then(result=>{
+                res.json(result)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
         }
     })
 })

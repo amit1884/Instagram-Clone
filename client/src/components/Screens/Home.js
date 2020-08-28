@@ -122,13 +122,39 @@ function Home() {
         })
     }
 
+    const deletePost=(postid)=>{
+        fetch(`/deletepost/${postid}`,{
+            method:"delete",
+            headers:{
+                Authorization:"Bearer "+localStorage.getItem("jwt")
+            }
+        })
+        .then(res=>res.json())
+        .then(result=>{
+            console.log(result)
+            const newData=data.filter(item=>{
+                return item._id!==result._id
+            })
+            setData(newData);
+        })
+    }
+
     return (
         <div className="home">
             {
                 data.map(item=>{
                     return(
                         <div className="card home-card" key={item._id}>
-                        <h5>{item.postedBy.name}</h5>
+                        <h5>{item.postedBy.name}
+                        {
+                            item.postedBy._id===state._id
+                            ?<i 
+                            onClick={()=>deletePost(item._id)}
+                            className="material-icons" 
+                            style={{color:"grey",cursor:"pointer",float:"right"}}>delete</i>
+                            :null
+                        }
+                        </h5>
                         <div className="card-image">
                             <img src ={item.photo} alt="post"/>
                         </div>
@@ -138,12 +164,12 @@ function Home() {
                                 ? <i 
                                 onClick={()=>unlikePost(item._id)}
                                 className="material-icons" 
-                                style={{color:"blue"}}>thumb_down
+                                style={{color:"blue",cursor:"pointer"}}>thumb_down
                                 </i>
                                 : <i 
                                 onClick={()=>likePost(item._id)}
                                 className="material-icons" 
-                                style={{color:"blue"}}>thumb_up</i>
+                                style={{color:"blue",cursor:"pointer"}}>thumb_up</i>
                             }
                             <h6>
                             <i className="material-icons" style={{color:"red",fontSize:"12px"}}>favorite</i>
