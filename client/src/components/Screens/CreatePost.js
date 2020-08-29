@@ -75,6 +75,7 @@ function CreatePost() {
                 textAlign:"center"
             }}
         >
+          <h2>Instagram</h2>
           <input
             type="text"
             placeholder="title"
