@@ -31,18 +31,31 @@ function Profile() {
                 borderBottom:"1px solid grey"
             }}>
                 <div>
-                    <img src ={defaultAvatar} alt ="profile" className="profile-img"/>
+                    <img src ={state?state.pic:defaultAvatar} alt ="profile" className="profile-img"/>
                 </div>
                 <div>
                     <h5>{state?state.name:"Loading"}</h5>
+                    <h6>{state?state.email:"Loading"}</h6>
                     <div style={{display:"flex",justifyContent:"space-between",overflow:"hidden"}}>
                         <p style={{marginLeft:"8px"}}>{mypics.length} Posts</p>
-                        <p style={{marginLeft:"8px"}}>{state?state.followers.length:0} Followers</p>
-                        <p style={{marginLeft:"8px"}}>{state?state.following.length:0} Following</p>
+                        <p style={{marginLeft:"8px"}}>
+                            {state?state.followers.length:"0"}&nbsp;
+                            Followers
+                        </p>
+                        <p style={{marginLeft:"8px"}}>
+                        {state?state.following.length:"0"}&nbsp;
+                            Following
+                        </p>
                     </div>
                 </div>
             </div>
-            <div className="gallery">
+            {
+                mypics.length===0?
+                <div style={{textAlign:"center"}}>
+                    <p><b>No Posts Uploaded Yet !</b></p>
+                </div>
+                :
+                <div className="gallery">
                 {
                     mypics.map(item=>{
                         return(
@@ -55,6 +68,8 @@ function Profile() {
                     })
                 }
             </div>
+            }
+           
         </div>
     )
 }

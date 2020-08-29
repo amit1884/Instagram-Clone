@@ -54,3 +54,10 @@ h2{
     right:20px !important;
     left:auto !important;
 }
+
+.dp{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    margin-top:1px;
+}

@@ -3,13 +3,13 @@ import image from '../../assets/1.jpg';
 import {UserContext} from '../../App'
 import '../../App.css'
 import {Link} from 'react-router-dom'
-function Home() {
+function SubscribesUsersPosts() {
     const {state,dispatch}=useContext(UserContext)
 
     const [data,setData]=useState([])
     useEffect(()=>{
 
-        fetch("/allpost",{
+        fetch("/getsubpost",{
             headers:{
                 "Authorization":"Bearer "+localStorage.getItem("jwt")
             }
@@ -146,11 +146,10 @@ function Home() {
                 data.map(item=>{
                     return(
                         <div className="card home-card" key={item._id}>
-                        <h5>
-                            <Link to ={item.postedBy._id!==state._id
+                        <h5><Link to ={item.postedBy._id!==state._id
                             ?"/profile/"+item.postedBy._id
                             :"/profile"}>
-                                <img src ={item.postedBy.pic?item.postedBy.pic:image} alt="profilepic" className="dp" align="left"/>
+                            <img src ={item.postedBy.pic?item.postedBy.pic:image} alt="profilepic" className="dp" align="left"/>
                                 &nbsp;
                             {item.postedBy.name}
                             </Link>
@@ -214,4 +213,4 @@ function Home() {
     )
 }
 
-export default Home
+export default SubscribesUsersPosts

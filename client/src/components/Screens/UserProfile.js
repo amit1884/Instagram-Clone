@@ -7,8 +7,8 @@ function UserProfile() {
 
     const [userProfile,setProfile]=useState(null)
     const {state,dispatch}=useContext(UserContext)
-    const [showfollow,setShowFollow]=useState(true)
     const{userid}=useParams()
+    const [showfollow,setShowFollow]=useState(state?!state.following.includes(userid):true)
     useEffect(()=>{
 
         fetch(`/user/${userid}`,{
@@ -99,7 +99,7 @@ function UserProfile() {
             borderBottom:"1px solid grey"
         }}>
             <div>
-                <img src ={defaultAvatar} alt ="profile" className="profile-img"/>
+                <img src ={userProfile.user.pic} alt ="profile" className="profile-img"/>
             </div>
             <div>
                 <h5>{userProfile.user.name}</h5>

@@ -11,6 +11,7 @@ export default function Navbar() {
             return [
                 <li><Link to="/profile">Profile</Link></li>,
                 <li><Link to ="/create">Create</Link></li>,
+                <li><Link to ="/myfollowingpost">FPosts</Link></li>,
                 <li>
                     <button 
                     style={{marginRight:"20px"}}

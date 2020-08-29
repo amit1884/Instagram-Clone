@@ -13,6 +13,10 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    pic:{
+        type:String,
+        default:"https://res.cloudinary.com/webarts/image/upload/v1598703774/default_jya5m4.jpg"
+    },
     followers:[
         {
             type:ObjectId,
