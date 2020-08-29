@@ -36,9 +36,9 @@ function Profile() {
                 <div>
                     <h5>{state?state.name:"Loading"}</h5>
                     <div style={{display:"flex",justifyContent:"space-between",overflow:"hidden"}}>
-                        <p style={{marginLeft:"8px"}}>45 Posts</p>
-                        <p style={{marginLeft:"8px"}}>40 Followers</p>
-                        <p style={{marginLeft:"8px"}}>45 Following</p>
+                        <p style={{marginLeft:"8px"}}>{mypics.length} Posts</p>
+                        <p style={{marginLeft:"8px"}}>{state?state.followers.length:0} Followers</p>
+                        <p style={{marginLeft:"8px"}}>{state?state.following.length:0} Following</p>
                     </div>
                 </div>
             </div>
