@@ -33,8 +33,8 @@ router.get('/allpost',requireLogin,(req,res)=>{
 
     Post.find()
     .populate("postedBy","_id name")
-    .populate("comments","_id name")
     .populate("comments.postedBy","_id name")
+    .sort('-createdAt')
     .then(posts=>{
          res.json({posts})   
     })
@@ -50,6 +50,7 @@ router.get('/getsubpost',requireLogin,(req,res)=>{
     .populate("postedBy","_id name")
     // .populate("comments","_id name")
     .populate("comments.postedBy","_id name")
+    .sort('-createdAt')
     .then(posts=>{
          res.json({posts})   
     })
