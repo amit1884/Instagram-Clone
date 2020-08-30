@@ -88,9 +88,10 @@ function UserProfile() {
     <>
     {userProfile?
 
-    <div style={{
+    <div className="card"style={{
         maxWidth:"550px",
-        margin:"0px auto"
+        margin:"0px auto",
+        minHeight:"100vh"
     }}>
         <div style={{
             display:"flex",

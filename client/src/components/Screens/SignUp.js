@@ -109,17 +109,17 @@ function SignUp() {
                 onChange={(e)=>setPassword(e.target.value)}
                 />
                  <div className="file-field input-field">
-              <div className="btn #64b5f6 blue darken-1">
-                <span>Upload Dp</span>
-                <input 
-                type="file"
-                onChange={(e)=>setImage(e.target.files[0])}
-                />
-              </div>
-              <div className="file-path-wrapper">
-                  <input type="text" className="file-path validate"/>
-              </div>
-          </div>
+                    <div className="btn #64b5f6 blue darken-1">
+                        <span>Upload Dp</span>
+                        <input 
+                        type="file"
+                        onChange={(e)=>setImage(e.target.files[0])}
+                        />
+                    </div>
+                    <div className="file-path-wrapper">
+                        <input type="text" className="file-path validate"/>
+                    </div>
+                </div>
                 <button 
                 onClick={PostData}
                 className="btn waves-effect waves-light #64b5f6 blue darken-1">
