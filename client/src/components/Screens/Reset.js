@@ -1,12 +1,9 @@
-import React ,{useState,useContext}from 'react'
-import {Link,useHistory} from 'react-router-dom'
-import {UserContext} from '../../App'
+import React ,{useState}from 'react'
+import {useHistory} from 'react-router-dom'
 import M from 'materialize-css';
-function Login() {
-    const {state,dispatch}=useContext(UserContext)
+function Reset() {
   const history=useHistory();
   const [email,setEmail]=useState('')
-  const [password,setPassword]=useState('')
 
   const PostData=()=>{
       if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
@@ -14,13 +11,12 @@ function Login() {
       }
       else{
 
-          fetch("/signin",{
+          fetch("/reset_password",{
               method:"post",
               headers:{
                   "Content-Type":"application/json"
               },
               body:JSON.stringify({
-                  password,
                   email
               })
           })
@@ -31,11 +27,7 @@ function Login() {
                   M.toast({html:data.error,classes:"#c62828 red darken-3"})
               }
               else{
-                  localStorage.setItem("jwt",data.token)
-                  localStorage.setItem("user",JSON.stringify(data.user))
-                  dispatch({type:"USER",payload:data.user})
-                  M.toast({html:"Logged In Successfully",classes:"#43a047 green darken-1"})
-                  history.push('/')
+                  M.toast({html:data.message,classes:"#43a047 green darken-1"})
               }
           })
           .catch(err=>{
@@ -53,30 +45,15 @@ function Login() {
           value={email}
           onChange={(e)=>setEmail(e.target.value)}
           />
-          <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e)=>setPassword(e.target.value)}
-          />
+          
           <button 
             onClick={PostData}
           className="btn waves-effect waves-light #64b5f6 blue darken-1">
-            Login
+            Reset Password
           </button>
-          <h6>
-                <Link to ="/reset">
-                    Forgot Password ?
-                </Link>
-            </h6>
-            <h5>
-                <Link to ="/signup">
-                    Don't Have an account ?
-                </Link>
-            </h5>
         </div>
        </div>
     )
 }
 
-export default Login
+export default Reset

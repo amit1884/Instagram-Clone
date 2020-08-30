@@ -1,0 +1,10 @@
+module.exports={
+    MONGOURI:process.env.DEVMONGOURI,
+    JWT_SECRET:process.env.JWT_SEC,
+    PASSWORD:process.env.PASSWORD
+}
+module.exports={
+    MONGOURI:process.env.DEVMONGOURI,
+    JWT_SECRET:process.env.JWT_SEC,
+    PASSWORD:process.env.PASSWORD
+}
