@@ -105,7 +105,7 @@ function UserProfile() {
             <div>
                 <h5>{userProfile.user.name}</h5>
                 <h6>{userProfile.user.email}</h6>
-                <div style={{display:"flex",justifyContent:"space-between",overflow:"hidden"}}>
+                <div style={{display:"flex",justifyContent:"space-evenly",overflow:"hidden"}}>
                     <p style={{marginLeft:"8px"}}>{userProfile.posts.length}&nbsp; Posts</p>
                     <p style={{marginLeft:"8px"}}>{userProfile.user.followers.length} Followers</p>
                     <p style={{marginLeft:"8px"}}>{userProfile.user.following.length} Following</p>

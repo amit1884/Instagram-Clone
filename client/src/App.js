@@ -12,6 +12,8 @@ import UserProfile from './components/Screens/UserProfile';
 import SubscribesUsersPosts from './components/Screens/SubscribedUsersPosts';
 import Reset from './components/Screens/Reset';
 import NewPassword from './components/Screens/NewPassword';
+import BottomNav from './components/BottomNav';
+import Search from './components/Screens/Search';
 export const UserContext=createContext()
 const Routing=()=>{
 
@@ -60,6 +62,9 @@ const Routing=()=>{
       <Route  path="/reset/:token">
         <NewPassword/>
       </Route>
+      <Route  path="/search">
+        <Search/>
+      </Route>
     </Switch>
   )
 }
@@ -70,6 +75,7 @@ function App() {
       <UserContext.Provider value ={{state,dispatch}}>
         <BrowserRouter>
           <Navbar/>
+          {state?<BottomNav/>:null}
           <Routing/>
         </BrowserRouter>
       </UserContext.Provider>

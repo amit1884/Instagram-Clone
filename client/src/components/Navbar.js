@@ -5,25 +5,25 @@ import {UserContext} from '../App'
 import M from 'materialize-css'
 export default function Navbar() {
     const history=useHistory()
-    const SearchModal=useRef(null)
-    const [search,setSearch]=useState('')
-    const [userDetails,setUserDetails]=useState([])
+    // const SearchModal=useRef(null)
+    // const [search,setSearch]=useState('')
+    // const [userDetails,setUserDetails]=useState([])
     const {state,dispatch}=useContext(UserContext)
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
-        M.Modal.init(SearchModal.current)
+    //     M.Modal.init(SearchModal.current)
 
-    },[])
+    // },[])
 
     const renderList=()=>{
         if(state)
         {
             return [
-                <li key={1}><i data-target="modal1" className="large material-icons modal-trigger" style={{color:"black",cursor:"pointer"}}>search</i></li>,
-                <li key={2}><Link to="/profile">Profile</Link></li>,
-                <li key={3}><Link to ="/create">Create</Link></li>,
-                <li key={4}><Link to ="/myfollowingpost">FPosts</Link></li>,
+                // <li key={1}><i data-target="modal1" className="large material-icons modal-trigger" style={{color:"black",cursor:"pointer"}}>search</i></li>,
+                // <li key={2}><Link to="/profile">Profile</Link></li>,
+                // <li key={3}><Link to ="/create">Create</Link></li>,
+                // <li key={4}><Link to ="/myfollowingpost">FPosts</Link></li>,
                 <li>
                     <button 
                     style={{marginRight:"20px"}}
@@ -47,23 +47,23 @@ export default function Navbar() {
         }
     }
 
-    const fetchUsers=(query)=>{
+    // const fetchUsers=(query)=>{
 
-        setSearch(query);
-        fetch("/search_user",{
-            method:"post",headers:{
-                "Content-Type":"application/json",
-            },
-            body:JSON.stringify({
-                query
-            })
-        })
-        .then(res=>res.json())
-        .then(result=>{
-            console.log(result)
-            setUserDetails(result.user)
-        })
-    }
+    //     setSearch(query);
+    //     fetch("/search_user",{
+    //         method:"post",headers:{
+    //             "Content-Type":"application/json",
+    //         },
+    //         body:JSON.stringify({
+    //             query
+    //         })
+    //     })
+    //     .then(res=>res.json())
+    //     .then(result=>{
+    //         console.log(result)
+    //         setUserDetails(result.user)
+    //     })
+    // }
     return (
         <nav>
         <div className="nav-wrapper white">
@@ -72,7 +72,7 @@ export default function Navbar() {
             {renderList()}
             </ul>
         </div>
-        <div id="modal1" class="modal" ref={SearchModal} style={{color:"black"}}>
+        {/* <div id="modal1" class="modal" ref={SearchModal} style={{color:"black"}}>
             <div className="modal-content">
             <input
                 type="text"
@@ -99,7 +99,7 @@ export default function Navbar() {
             <div className="modal-footer">
             <button className="modal-close waves-effect waves-green btn-flat" onClick={()=>setSearch('')}>Clear</button>
             </div>
-        </div>
+        </div> */}
         </nav>
     )
 }

@@ -150,7 +150,8 @@ function Home() {
                             <Link to ={item.postedBy._id!==state._id
                             ?"/profile/"+item.postedBy._id
                             :"/profile"}>
-                                <img src ={item.postedBy.pic?item.postedBy.pic:image} alt="profilepic" className="dp" align="left"/>
+                                <img src ={item.postedBy.pic} alt="profilepic" className="dp" align="left"/>
+                                
                                 &nbsp;
                             {item.postedBy.name}
                             </Link>

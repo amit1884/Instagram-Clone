@@ -35,7 +35,7 @@ h2{
 .gallery{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    /* justify-content: space-around; */
 }
 .item{
     width:25%;
@@ -61,4 +61,20 @@ h2{
     height:30px;
     border-radius:50%;
     margin-top:1px;
+}
+
+.bottom-nav{
+    position:fixed;
+    width:100%;
+    display: flex;
+    justify-content: space-evenly;
+    bottom:0;
+    height:50px;
+    z-index:999;
+    padding:10px;
+    background-color:#fff;
+    box-shadow:1px 1px 10px #000
+}
+.single-nav-item i{
+    font-size:35px;
 }

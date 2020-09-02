@@ -72,17 +72,17 @@ function Profile() {
         }}>
             <div style={{
                 display:"flex",
-                justifyContent:"space-around",
-                margin:"18px 0px",
+                justifyContent:"space-evenly",
+                margin:"20px 0px",
                 borderBottom:"1px solid grey"
             }}>
                 <div>
                     <img src ={state?state.pic:defaultAvatar} alt ="profile" className="profile-img"/>
                 </div>
                 <div>
-                    <h5>{state?state.name:"Loading"}</h5>
-                    <h6>{state?state.email:"Loading"}</h6>
-                    <div style={{display:"flex",justifyContent:"space-between",overflow:"hidden"}}>
+                    <h5 style={{marginLeft:"30px"}}>{state?state.name:"Loading"}</h5>
+                    <h6 style={{marginLeft:"30px"}}>{state?state.email:"Loading"}</h6>
+                    <div style={{display:"flex",justifyContent:"space-evenly",overflow:"hidden"}}>
                         <p>{mypics.length} Posts</p>
                         <p>
                             {state?state.followers.length:"0"}&nbsp;
