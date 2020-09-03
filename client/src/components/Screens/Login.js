@@ -9,7 +9,8 @@ function Login() {
   const [password,setPassword]=useState('')
 
   const PostData=()=>{
-      if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+      if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))
+      {
           M.toast({html:"Invalid Email",classes:"#c62828 red darken-1"})
       }
       else{
@@ -20,8 +21,8 @@ function Login() {
                   "Content-Type":"application/json"
               },
               body:JSON.stringify({
-                  password,
-                  email
+                  email,
+                  password
               })
           })
           .then(res=>res.json())

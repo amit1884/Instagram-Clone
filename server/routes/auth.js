@@ -71,14 +71,13 @@ router.post("/signin",(req,res)=>{
     const{email,password}=req.body;
 
     if(!email||!password){
-        return res.status(422).json({message:"Please fill all the  fields are required"})
+        return res.status(422).json({error:"Please fill all the  fields are required"})
     }
-
     User.findOne({email:email})
     .then(savedUser=>{
         if(!savedUser)
         {
-            return res.status(422).json({message:"Invalid email or password"})
+            return res.status(422).json({error:"Invalid email or password"})
         }
         bcrypt.compare(password,savedUser.password)
         .then(doMatch=>{
@@ -91,7 +90,7 @@ router.post("/signin",(req,res)=>{
 
             }
             else{
-                return res.status(422).json({message:"Invalid password"})
+                return res.status(422).json({error:"Invalid password"})
             }
         })
         .catch(err=>{

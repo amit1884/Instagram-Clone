@@ -9,7 +9,7 @@ function Search() {
     const fetchUsers=(query)=>{
 
         setSearch(query);
-        if(query!=='')
+        if(search!=='')
         {
             fetch("/search_user",{
                 method:"post",headers:{
